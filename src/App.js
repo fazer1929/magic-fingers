@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
@@ -7,6 +7,13 @@ import { drawHand } from "./utilities";
 function App() {
 	const camRef = useRef(null);
 	const canvasRef = useRef(null);
+	const canvas2Ref = useRef(null);
+	useEffect(() => {
+		const ctx = canvas2Ref.current.getContext("2d");
+		ctx.canvas.height = 480;
+		ctx.canvas.width = 680;
+	}, []);
+
 	const runHandpose = async () => {
 		const net = await handpose.load();
 		console.log("hanpose Loaded");
@@ -34,11 +41,12 @@ function App() {
 
 			//Make Detections
 			const hand = await net.estimateHands(video);
-			console.log(hand);
+			// console.log(hand);
 			//Draw Hand
 			const ctx = canvasRef.current.getContext("2d");
-			console.log(hand);
-			drawHand(hand, ctx);
+			const ctx2 = canvas2Ref.current.getContext("2d");
+
+			drawHand(hand, ctx, ctx2);
 		}
 	};
 	runHandpose();
@@ -52,12 +60,12 @@ function App() {
 					marginLeft: "auto",
 					marginRight: "auto",
 					right: 0,
-					left: 0,
-					zIndex: 9,
-					// width: 320,
-					width: 640,
-					// height: 240,
-					height: 480,
+					// left: 0,
+					zIndex: 11,
+					width: 320,
+					// width: 640,
+					height: 240,
+					// height: 480,
 					textAlign: "center",
 				}}
 			></Webcam>
@@ -65,14 +73,32 @@ function App() {
 				ref={canvasRef}
 				style={{
 					position: "absolute",
-					left: 0,
+					marginLeft: "auto",
+					marginRight: "auto",
 					right: 0,
+					// left: 0,
+					zIndex: 11,
+					width: 320,
+					// width: 640,
+					height: 240,
+					// height: 480,
+					textAlign: "center",
+				}}
+			/>
+			<canvas
+				ref={canvas2Ref}
+				style={{
+					position: "relative",
 					marginLeft: "auto",
 					marginRight: "auto",
 					zIndex: 9,
-					width: 640,
-					height: 480,
+					width: 1280,
+					border: 3,
+					borderColor: "black",
+					height: 720,
 					textAlign: "center",
+					backgroundColor: "whitesmoke",
+					padding: 20,
 				}}
 			/>
 		</div>

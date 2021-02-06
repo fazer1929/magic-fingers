@@ -31,49 +31,64 @@ const style = {
 	20: { color: "gold", size: 6 },
 };
 
-export const drawHand = (predictions, ctx) => {
+export const drawHand = (predictions, ctx, ctx2) => {
 	if (predictions.length > 0) {
 		predictions.forEach((prediction) => {
 			const landmarks = prediction.landmarks;
 
 			//Finger Loop
 			// for (let j = 0; j < Object.keys(fingerJoints).length; j++) {
-			var j = 1;
-			let finger = Object.keys(fingerJoints)[j];
-			//Loop Through Joints
+			// // var j = 1;
+			// let finger = Object.keys(fingerJoints)[j];
+			// //Loop Through Joints
 			// for (let k = 0; k < fingerJoints[finger].length - 1; k++) {
-			//Get Pair of Joints
-			var k = 1;
-			const firstJointIndex = fingerJoints[finger][k];
-			const secondJointIndex = fingerJoints[finger][k + 1];
+			// //Get Pair of Joints
+			// // var k = 1;
+			// const firstJointIndex = fingerJoints[finger][k];
+			// const secondJointIndex = fingerJoints[finger][k + 1];
 
-			//draw Path
-			ctx.beginPath();
-			ctx.moveTo(landmarks[firstJointIndex][0], landmarks[firstJointIndex][1]);
-			ctx.lineTo(
-				landmarks[secondJointIndex][0],
-				landmarks[secondJointIndex][1],
-			);
-			ctx.strokeStyle = "gold";
-			ctx.lineWidth = 2;
-			ctx.stroke();
+			// //draw Path
+			// ctx.beginPath();
+			// ctx.moveTo(landmarks[firstJointIndex][0], landmarks[firstJointIndex][1]);
+			// ctx.lineTo(
+			// 	landmarks[secondJointIndex][0],
+			// 	landmarks[secondJointIndex][1],
+			// );
+			// ctx.strokeStyle = "gold";
+			// ctx.lineWidth = 2;
+			// ctx.stroke();
 			// }
 			// }
 
+			// To Draw Point
+			var i = 8;
 			// for (var i = 0; i < landmarks.length; i++) {
-			// 	// Get X Point
-			// 	const x = landmarks[i][0];
-			// 	// Get Y Point
-			// 	const y = landmarks[i][1];
+			// Get X Point
+			const x = landmarks[i][0];
+			// Get Y Point
+			const y = landmarks[i][1];
+			draw(ctx2, x, y);
+			// Start Drawing
+			ctx.beginPath();
+			ctx.arc(x, y, style[i]["size"], 0, 3 * Math.PI);
 
-			// 	// Start Drawing
-			// 	ctx.beginPath();
-			// 	ctx.arc(x, y, style[i]["size"], 0, 3 * Math.PI);
-
-			// 	//Set line color
-			// 	ctx.fillStyle = style[i]["color"];
-			// 	ctx.fill();
+			//Set line color
+			ctx.fillStyle = style[i]["color"];
+			ctx.fill();
 			// }
 		});
 	}
 };
+function draw(ctx, j, y) {
+	console.log(j, y);
+	// ctx.canvas.height = 720;
+	// ctx.canvas.width = 1280;
+	console.log(ctx.canvas.height);
+	var x = Math.abs(ctx.canvas.width - j);
+	ctx.lineWidth = 2;
+	ctx.lineCap = "round";
+	ctx.lineTo(x, y);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(x, y);
+}
