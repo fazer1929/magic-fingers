@@ -37,44 +37,43 @@ export const drawHand = (predictions, ctx) => {
 			const landmarks = prediction.landmarks;
 
 			//Finger Loop
-			for (let j = 0; j < Object.keys(fingerJoints).length; j++) {
-				let finger = Object.keys(fingerJoints)[j];
-				//Loop Through Joints
-				for (let k = 0; k < fingerJoints[finger].length - 1; k++) {
-					//Get Pair of Joints
-					const firstJointIndex = fingerJoints[finger][k];
-					const secondJointIndex = fingerJoints[finger][k + 1];
+			// for (let j = 0; j < Object.keys(fingerJoints).length; j++) {
+			var j = 1;
+			let finger = Object.keys(fingerJoints)[j];
+			//Loop Through Joints
+			// for (let k = 0; k < fingerJoints[finger].length - 1; k++) {
+			//Get Pair of Joints
+			var k = 1;
+			const firstJointIndex = fingerJoints[finger][k];
+			const secondJointIndex = fingerJoints[finger][k + 1];
 
-					//draw Path
-					ctx.beginPath();
-					ctx.moveTo(
-						landmarks[firstJointIndex][0],
-						landmarks[firstJointIndex][1],
-					);
-					ctx.lineTo(
-						landmarks[secondJointIndex][0],
-						landmarks[secondJointIndex][1],
-					);
-					ctx.strokeStyle = "gold";
-					ctx.lineWidth = 30;
-					ctx.stroke();
-				}
-			}
+			//draw Path
+			ctx.beginPath();
+			ctx.moveTo(landmarks[firstJointIndex][0], landmarks[firstJointIndex][1]);
+			ctx.lineTo(
+				landmarks[secondJointIndex][0],
+				landmarks[secondJointIndex][1],
+			);
+			ctx.strokeStyle = "gold";
+			ctx.lineWidth = 2;
+			ctx.stroke();
+			// }
+			// }
 
-			for (var i = 0; i < landmarks.length; i++) {
-				// Get X Point
-				const x = landmarks[i][0];
-				// Get Y Point
-				const y = landmarks[i][1];
+			// for (var i = 0; i < landmarks.length; i++) {
+			// 	// Get X Point
+			// 	const x = landmarks[i][0];
+			// 	// Get Y Point
+			// 	const y = landmarks[i][1];
 
-				// Start Drawing
-				ctx.beginPath();
-				ctx.arc(x, y, style[i]["size"], 0, 3 * Math.PI);
+			// 	// Start Drawing
+			// 	ctx.beginPath();
+			// 	ctx.arc(x, y, style[i]["size"], 0, 3 * Math.PI);
 
-				//Set line color
-				ctx.fillStyle = style[i]["color"];
-				ctx.fill();
-			}
+			// 	//Set line color
+			// 	ctx.fillStyle = style[i]["color"];
+			// 	ctx.fill();
+			// }
 		});
 	}
 };
