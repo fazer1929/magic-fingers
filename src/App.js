@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
+import { drawHand } from "./utilities";
 function App() {
 	const camRef = useRef(null);
 	const canvasRef = useRef(null);
@@ -34,6 +35,10 @@ function App() {
 			//Make Detections
 			const hand = await net.estimateHands(video);
 			console.log(hand);
+			//Draw Hand
+			const ctx = canvasRef.current.getContext("2d");
+			console.log(hand);
+			drawHand(hand, ctx);
 		}
 	};
 	runHandpose();
@@ -41,15 +46,18 @@ function App() {
 		<div>
 			<Webcam
 				ref={camRef}
-				mirrored
+				// mirrored
 				style={{
 					position: "absolute",
 					marginLeft: "auto",
 					marginRight: "auto",
 					right: 0,
+					left: 0,
 					zIndex: 9,
-					width: 320,
-					height: 240,
+					// width: 320,
+					width: 640,
+					// height: 240,
+					height: 480,
 					textAlign: "center",
 				}}
 			></Webcam>
