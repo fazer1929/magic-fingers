@@ -8,19 +8,20 @@ function App() {
 	const camRef = useRef(null);
 	const canvasRef = useRef(null);
 	const canvas2Ref = useRef(null);
-	useEffect(() => {
-		const ctx = canvas2Ref.current.getContext("2d");
-		ctx.canvas.height = 480;
-		ctx.canvas.width = 680;
-	}, []);
-
+	window.onload = () => {
+		const ctx2 = canvas2Ref.current.getContext("2d");
+		ctx2.canvas.height = 480;
+		ctx2.canvas.width = 640;
+	};
 	const runHandpose = async () => {
 		const net = await handpose.load();
 		console.log("hanpose Loaded");
+
 		//Detect Hands
+
 		setInterval(() => {
 			detect(net);
-		}, 100);
+		}, 62);
 	};
 	const detect = async (net) => {
 		if (
