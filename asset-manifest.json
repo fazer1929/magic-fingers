@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/magic-fingers/static/css/main.1bbc8a57.chunk.css",
+    "main.js": "/magic-fingers/static/js/main.3b21a68c.chunk.js",
+    "main.js.map": "/magic-fingers/static/js/main.3b21a68c.chunk.js.map",
+    "runtime-main.js": "/magic-fingers/static/js/runtime-main.c5f9c025.js",
+    "runtime-main.js.map": "/magic-fingers/static/js/runtime-main.c5f9c025.js.map",
+    "static/js/2.743af394.chunk.js": "/magic-fingers/static/js/2.743af394.chunk.js",
+    "static/js/2.743af394.chunk.js.map": "/magic-fingers/static/js/2.743af394.chunk.js.map",
+    "static/js/3.e688ed13.chunk.js": "/magic-fingers/static/js/3.e688ed13.chunk.js",
+    "static/js/3.e688ed13.chunk.js.map": "/magic-fingers/static/js/3.e688ed13.chunk.js.map",
+    "index.html": "/magic-fingers/index.html",
+    "static/css/main.1bbc8a57.chunk.css.map": "/magic-fingers/static/css/main.1bbc8a57.chunk.css.map",
+    "static/js/2.743af394.chunk.js.LICENSE.txt": "/magic-fingers/static/js/2.743af394.chunk.js.LICENSE.txt",
+    "static/media/frame.a60c3a20.png": "/magic-fingers/static/media/frame.a60c3a20.png",
+    "static/media/space.b282a800.gif": "/magic-fingers/static/media/space.b282a800.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c5f9c025.js",
+    "static/js/2.743af394.chunk.js",
+    "static/css/main.1bbc8a57.chunk.css",
+    "static/js/main.3b21a68c.chunk.js"
+  ]
+}
