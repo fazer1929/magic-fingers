@@ -9,6 +9,7 @@ The Fingerpose models recognizes different hand gestures and does things accordi
 
 ## Screenshots from the app
 ![Screenshot1](https://s2.gifyu.com/images/thumbnaildc20760440b0c848.png =300x300)
+<img src="https://s2.gifyu.com/images/thumbnaildc20760440b0c848.png" alt="drawing" width="200"/>
 ![Screenshot2](https://s2.gifyu.com/images/thumbs-up18270d460993a581.png =300x300)
 
 
@@ -18,6 +19,6 @@ The Fingerpose models recognizes different hand gestures and does things accordi
 
 ## Install Locally
 1. Clone The Repository
-2. After entring the project folder run `npm install`
-3. After it completes installation run `npm start`
+2. After entring the project folder run, `npm install`
+3. After it completes installation run, `npm start`
 4. Lastly open the browser and go to **localhost:3000**
