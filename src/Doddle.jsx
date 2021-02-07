@@ -8,14 +8,13 @@ function Doodle() {
 	const canvasRef = useRef(null);
 	const canvas2Ref = useRef(null);
 	const runHandpose = async () => {
-		const ctx2 = canvas2Ref?.current.getContext("2d");
-		ctx2.canvas.height = 480;
-		ctx2.canvas.width = 640;
-
 		const net = await handpose.load();
 		console.log("hanpose Loaded");
 
 		//Detect Hands
+		// const ctx2 = canvas2Ref?.current?.getContext("2d");
+		// ctx2.canvas.height = 480;
+		// ctx2.canvas.width = 640;
 
 		setInterval(() => {
 			detect(net);
@@ -86,6 +85,8 @@ function Doodle() {
 			/>
 			<canvas
 				ref={canvas2Ref}
+				width={640}
+				height={480}
 				style={{
 					position: "relative",
 					marginLeft: "auto",
