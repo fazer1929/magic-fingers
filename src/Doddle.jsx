@@ -3,6 +3,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import { drawHand } from "./utilities";
+import frame from "./frame.png";
 function Doodle() {
 	const camRef = useRef(null);
 	const canvasRef = useRef(null);
@@ -19,6 +20,12 @@ function Doodle() {
 		setInterval(() => {
 			detect(net);
 		}, 62);
+	};
+	window.onload = () => {
+		const canvas = document.getElementById("canvas2");
+		const ctx = canvas.getContext("2d");
+		ctx.fillStyle = "#1e272e";
+		ctx.fillRect(0, 0, 640, 480);
 	};
 	const detect = async (net) => {
 		if (
@@ -49,11 +56,13 @@ function Doodle() {
 	};
 	runHandpose();
 	return (
-		<div>
+		<div style={{ backgroundColor: "#1e272e" }}>
 			<Webcam
 				ref={camRef}
 				mirrored
 				style={{
+					backgroundImage: `url(${frame})`,
+					padding: 10,
 					position: "absolute",
 					marginLeft: "auto",
 					marginRight: "auto",
@@ -87,18 +96,18 @@ function Doodle() {
 				ref={canvas2Ref}
 				width={640}
 				height={480}
+				id="canvas2"
+				backgroundColor="#1e272e "
 				style={{
-					position: "relative",
-					marginLeft: "auto",
-					marginRight: "auto",
+					backgroundColor: "#1e272e",
 					zIndex: 9,
 					width: 1280,
 					border: 3,
+
 					borderColor: "black",
 					height: 720,
 					textAlign: "center",
 					backgroundColor: "whitesmoke",
-					padding: 20,
 				}}
 			/>
 		</div>

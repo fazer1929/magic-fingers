@@ -1,5 +1,6 @@
 .App {
 	text-align: center;
+	background-color: #1e272e;
 }
 
 .App-logo {
@@ -53,4 +54,40 @@
 	bottom: 40px;
 	left: 50%;
 	transform: translatex(-50%);
+}
+/* styling the button*/
+.glowBtn {
+	padding: 10px 10px;
+	display: inline-block;
+	color: #2c0ddb;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 1.2em;
+	border-radius: 10px;
+	border: none;
+	overflow: hidden;
+}
+
+/*creating animation effect*/
+.glowBtn:hover {
+	color: #fff;
+	background: #0e0088ee;
+	box-shadow: 0 0 50px #1424ff;
+}
+.speechBtn {
+	border-radius: 50%;
+	height: 100px;
+	width: 100px;
+}
+.glowBtn:focus {
+	outline: none;
+}
+p {
+	color: aliceblue;
+}
+.btnText {
+	font-size: 2rem;
+	font-weight: 500;
+	letter-spacing: 1.2;
 }
