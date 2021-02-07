@@ -2,12 +2,14 @@
 ## A Machine Learning based doodler for all witches and wizards.
 
 This is a webapp made with ReactJS, it uses TensorlflowJS and its models for hand and finger recognition.
+
 The Handpose model is used to detect the hand and provide different landmarks that it recognizes.
+
 The Fingerpose models recognizes different hand gestures and does things accordingly.
 
 ## Screenshots from the app
-![Screenshot1](https://gifyu.com/image/VbrZ)
-![Screenshot2](https://gifyu.com/image/Vbri)
+![Screenshot1](https://s2.gifyu.com/images/thumbnaildc20760440b0c848.png)
+![Screenshot2](https://s2.gifyu.com/images/thumbs-up18270d460993a581.png)
 
 
 ## See the app
