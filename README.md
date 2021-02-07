@@ -8,8 +8,8 @@ The Handpose model is used to detect the hand and provide different landmarks th
 The Fingerpose models recognizes different hand gestures and does things accordingly.
 
 ## Screenshots from the app
-![Screenshot1](https://s2.gifyu.com/images/thumbnaildc20760440b0c848.png =300x)
-![Screenshot2](https://s2.gifyu.com/images/thumbs-up18270d460993a581.png =300x)
+![Screenshot1](https://s2.gifyu.com/images/thumbnaildc20760440b0c848.png =300x300)
+![Screenshot2](https://s2.gifyu.com/images/thumbs-up18270d460993a581.png =300x300)
 
 
 ## See the app
