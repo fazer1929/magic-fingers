@@ -13,7 +13,7 @@ The Fingerpose models recognizes different hand gestures and does things accordi
 
 
 ## See the app
-- [x] Go to this link [https://fazer1929.github.io/magic-fingers/](https://fazer1929.github.io/magic-fingers/)
+- [x] Go to this link [https://fazer1929.github.io/magic-finger/](https://fazer1929.github.io/magic-finger/)
 - [x] Or, Install it locally
 
 ## Install Locally
