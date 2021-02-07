@@ -52,7 +52,7 @@ function Doodle() {
 		<div>
 			<Webcam
 				ref={camRef}
-				// mirrored
+				mirrored
 				style={{
 					position: "absolute",
 					marginLeft: "auto",

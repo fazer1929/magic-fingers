@@ -91,7 +91,7 @@ export default function Home() {
 					</p>
 				</div>
 				<div className="end">
-					<button>Muggles Click Here</button>
+					<button onClick={openDoor}>Muggles Click Here</button>
 				</div>
 			</div>
 		</div>

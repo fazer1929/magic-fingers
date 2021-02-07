@@ -37,28 +37,31 @@ export const drawHand = (predictions, ctx, ctx2) => {
 			const landmarks = prediction.landmarks;
 
 			//Finger Loop
-			// for (let j = 0; j < Object.keys(fingerJoints).length; j++) {
-			// // var j = 1;
-			// let finger = Object.keys(fingerJoints)[j];
-			// //Loop Through Joints
-			// for (let k = 0; k < fingerJoints[finger].length - 1; k++) {
-			// //Get Pair of Joints
-			// // var k = 1;
-			// const firstJointIndex = fingerJoints[finger][k];
-			// const secondJointIndex = fingerJoints[finger][k + 1];
+			for (let j = 0; j < Object.keys(fingerJoints).length; j++) {
+				// var j = 1;
+				let finger = Object.keys(fingerJoints)[j];
+				//Loop Through Joints
+				for (let k = 0; k < fingerJoints[finger].length - 1; k++) {
+					//Get Pair of Joints
+					// var k = 1;
+					const firstJointIndex = fingerJoints[finger][k];
+					const secondJointIndex = fingerJoints[finger][k + 1];
 
-			// //draw Path
-			// ctx.beginPath();
-			// ctx.moveTo(landmarks[firstJointIndex][0], landmarks[firstJointIndex][1]);
-			// ctx.lineTo(
-			// 	landmarks[secondJointIndex][0],
-			// 	landmarks[secondJointIndex][1],
-			// );
-			// ctx.strokeStyle = "gold";
-			// ctx.lineWidth = 2;
-			// ctx.stroke();
-			// }
-			// }
+					//draw Path
+					ctx.beginPath();
+					ctx.moveTo(
+						ctx.canvas.width - landmarks[firstJointIndex][0],
+						landmarks[firstJointIndex][1],
+					);
+					ctx.lineTo(
+						ctx.canvas.width - landmarks[secondJointIndex][0],
+						landmarks[secondJointIndex][1],
+					);
+					ctx.strokeStyle = "indigo";
+					ctx.lineWidth = 5;
+					ctx.stroke();
+				}
+			}
 
 			// To Draw Point
 			var i = 8;
@@ -70,7 +73,7 @@ export const drawHand = (predictions, ctx, ctx2) => {
 			draw(ctx2, x, y);
 			// Start Drawing
 			ctx.beginPath();
-			ctx.arc(x, y, style[i]["size"], 0, 3 * Math.PI);
+			ctx.arc(ctx.canvas.width - x, y, style[i]["size"], 0, 3 * Math.PI);
 
 			//Set line color
 			ctx.fillStyle = style[i]["color"];
