@@ -50,11 +50,11 @@ export const drawHand = (predictions, ctx, ctx2) => {
 					//draw Path
 					ctx.beginPath();
 					ctx.moveTo(
-						ctx.canvas.width - landmarks[firstJointIndex][0],
+						ctx.canvas.width - (landmarks[firstJointIndex][0] + 10),
 						landmarks[firstJointIndex][1],
 					);
 					ctx.lineTo(
-						ctx.canvas.width - landmarks[secondJointIndex][0],
+						ctx.canvas.width - (landmarks[secondJointIndex][0] + 10),
 						landmarks[secondJointIndex][1],
 					);
 					ctx.strokeStyle = "indigo";
@@ -73,7 +73,7 @@ export const drawHand = (predictions, ctx, ctx2) => {
 			draw(ctx2, x, y);
 			// Start Drawing
 			ctx.beginPath();
-			ctx.arc(ctx.canvas.width - x, y, style[i]["size"], 0, 3 * Math.PI);
+			ctx.arc(ctx.canvas.width - (x + 10), y, style[i]["size"], 0, 3 * Math.PI);
 
 			//Set line color
 			ctx.fillStyle = style[i]["color"];
@@ -83,12 +83,11 @@ export const drawHand = (predictions, ctx, ctx2) => {
 	}
 };
 function draw(ctx, j, y) {
-	console.log(j, y);
 	// ctx.canvas.height = 720;
 	// ctx.canvas.width = 1280;
-	console.log(ctx.canvas.height);
 	var x = Math.abs(ctx.canvas.width - j);
 	ctx.lineWidth = 2;
+	ctx.strokeStyle = "#FFf";
 	ctx.lineCap = "round";
 	ctx.lineTo(x, y);
 	ctx.stroke();

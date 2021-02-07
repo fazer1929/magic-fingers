@@ -1,12 +1,15 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from "react-webcam";
 import { drawHand } from "./utilities";
 import frame from "./frame.png";
+import * as fp from "fingerpose";
 function Doodle() {
 	const camRef = useRef(null);
 	const canvasRef = useRef(null);
+	const [changeColor, setChangeColor] = useState(false);
+	const [ges, setGes] = useState("");
 	const canvas2Ref = useRef(null);
 	const runHandpose = async () => {
 		const net = await handpose.load();
@@ -47,6 +50,27 @@ function Doodle() {
 			//Make Detections
 			const hand = await net.estimateHands(video);
 			// console.log(hand);
+
+			if (hand.length > 0) {
+				console.log(fp);
+				const GE = new fp.GestureEstimator([
+					fp.Gestures.VictoryGesture,
+					fp.Gestures.ThumbsUpGesture,
+				]);
+				const gesture = await GE.estimate(hand[0].landmarks, 8);
+
+				// console.log(gesture);
+				if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
+					const confidence = gesture.gestures.map(
+						(prediction) => prediction.confidence,
+					);
+					const maxConfidence = confidence.indexOf(
+						Math.max.apply(null, confidence),
+					);
+					setGes(gesture.gestures[maxConfidence].name);
+					console.log(ges);
+				}
+			}
 			//Draw Hand
 			const ctx = canvasRef.current.getContext("2d");
 			const ctx2 = canvas2Ref.current.getContext("2d");
@@ -56,7 +80,17 @@ function Doodle() {
 	};
 	runHandpose();
 	return (
-		<div style={{ backgroundColor: "#1e272e" }}>
+		<div style={{ backgroundColor: "#282c3" }}>
+			<div
+				style={{
+					color: "#fff",
+					textAlign: "center",
+					fontSize: "2rem",
+				}}
+			>
+				{ges == "thumbs_up" ? "Thumbs Up It is" : ""}
+				{ges == "victory" ? "You are Victorious" : ""}
+			</div>
 			<Webcam
 				ref={camRef}
 				mirrored
